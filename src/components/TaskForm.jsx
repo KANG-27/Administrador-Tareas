@@ -5,6 +5,7 @@ function TaskForm({ setSelected, onSaveTask }) {
     title: "",
     date: "",
     time: "",
+    complete: false,
   });
 
   const handleChange = (e) => {
@@ -18,8 +19,8 @@ function TaskForm({ setSelected, onSaveTask }) {
   const handleSubmit = (e) => {
     e.preventDefault();
     onSaveTask(formData);
-    setFormData({ title: "", date: "", time: "" });
-    setSelected("today");
+    setFormData({ title: "", date: "", time: "", complete: false });
+    setSelected("all");
   };
 
   return (
@@ -30,7 +31,7 @@ function TaskForm({ setSelected, onSaveTask }) {
           <p
             className="text-primary-color text-4xl "
             onClick={() => {
-              setSelected("today");
+              setSelected("all");
             }}
           >
             x
