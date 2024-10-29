@@ -11,3 +11,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root{
+  --primary-color: #05A331;
+  --second-color: #005117;
+  --three-color: #95AB9B;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
