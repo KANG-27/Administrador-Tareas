@@ -9,15 +9,11 @@ function App() {
   const [selected, setSelected] = useState("all");
 
   useEffect(() => {
-    // Cargar tareas del localStorage al iniciar el componente
-    const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
-    setTasks(storedTasks);
+    const savedTasks = localStorage.getItem("taskData");
+    if (savedTasks) {
+      setTasks(JSON.parse(savedTasks)); // Parsea el JSON a un objeto
+    }
   }, []);
-
-  useEffect(() => {
-    // Guardar las tareas en localStorage cada vez que cambien
-    localStorage.setItem("tasks", JSON.stringify(tasks));
-  }, [tasks]);
 
   const updateTasks = (newTask) => {
     const updateTask = [...tasks, newTask];
@@ -33,7 +29,7 @@ function App() {
         <TaskForm onSaveTask={updateTasks} setSelected={setSelected} />
       )}
       {selected === "all" &&
-        <TaskList tasks={tasks} setTasks={setTasks} setSelected={setSelected}/>
+        <TaskList tasks={tasks} setSelected={setSelected} setTasks={setTasks}/>
       }
     </div>
   );

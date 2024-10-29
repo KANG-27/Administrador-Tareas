@@ -1,28 +1,34 @@
-function TaskList({ tasks, setTasks, setSelected }) {
+function TaskList({ tasks, setSelected, setTasks }) {
+
+
   const toggleComplete = (index) => {
     const updatedTasks = tasks.map((task, i) =>
       i === index ? { ...task, complete: !task.complete } : task
     );
     setTasks(updatedTasks);
+    localStorage.setItem("taskData", JSON.stringify(updatedTasks));
+
   };
 
   const deleteTask = (index) => {
     const updatedTasks = tasks.filter((_, i) => i !== index);
     setTasks(updatedTasks);
+    localStorage.setItem("taskData", JSON.stringify(updatedTasks));
+
   };
 
   const edit = (index) => {
-    deleteTask(index);
-    setSelected("newCard");
+      deleteTask(index);
+      setSelected("newCard");
   };
 
   return (
     <div className="w-full mt-20 ml-16">
       <h1 className="text-start text-4xl">Proximo</h1>
       {tasks.map((task, index) => (
-        <>
+        <div key={index}>
           <div className="flex w-full  items-center mt-10">
-            <span class="material-symbols-outlined text-gray-600">
+            <span className="material-symbols-outlined text-gray-600">
               date_range
             </span>
             <p className="text-primary-color mx-2">{task.date}</p>
@@ -42,30 +48,30 @@ function TaskList({ tasks, setTasks, setSelected }) {
               <div className="flex gap-5 items-center mt-2 ml-10">
                 <p className="text-primary-color flex items-center">
                   {task.time}{" "}
-                  <span class="material-symbols-outlined">timer</span>
+                  <span className="material-symbols-outlined">timer</span>
                 </p>
                 <p className="text-primary-color flex items-center">
                   {task.date}
-                  <span class="material-symbols-outlined">event</span>
+                  <span className="material-symbols-outlined">event</span>
                 </p>
               </div>
             </div>
             <div>
               <span
-                class="material-symbols-outlined mr-2 text-primary-color"
+                className="material-symbols-outlined mr-2 text-primary-color"
                 onClick={() => edit(index)}
               >
                 edit
               </span>
               <span
-                class="material-symbols-outlined text-primary-color"
+                className="material-symbols-outlined text-primary-color"
                 onClick={() => deleteTask(index)}
               >
                 delete
               </span>
             </div>
           </div>
-        </>
+        </div>
       ))}
     </div>
   );

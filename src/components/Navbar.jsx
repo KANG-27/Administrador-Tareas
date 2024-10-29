@@ -19,18 +19,18 @@ function Navbar({ setSelected }) {
             className="flex items-center"
             onClick={() => setSelected("search")}
           >
-            <span class="material-symbols-outlined mr-5">search</span>
+            <span className="material-symbols-outlined mr-5">search</span>
             <p className="text-xl">Buscar</p>
           </li>
           <li className="flex items-center" onClick={() => setSelected("all")}>
-            <span class="material-symbols-outlined mr-5">calendar_month</span>
+            <span className="material-symbols-outlined mr-5">calendar_month</span>
             <p className="text-xl">Todo</p>
           </li>
           <li
             className="flex items-center"
             onClick={() => setSelected("today")}
           >
-            <span class="material-symbols-outlined mr-5">today</span>
+            <span className="material-symbols-outlined mr-5">today</span>
             <p className="text-xl">Hoy</p>
           </li>
         </ul>
