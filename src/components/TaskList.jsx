@@ -25,7 +25,10 @@ function TaskList({ tasks, setSelected, setTasks }) {
   return (
     <div className="w-full mt-20 ml-16">
       <h1 className="text-start text-4xl">Proximo</h1>
-      {tasks.map((task, index) => (
+      {tasks.lenght === 0?
+      <div className="h-full flex justify-center items-center"><p>No se encontaron tarjetas...</p></div>
+      :
+      tasks.map((task, index) => (
         <div key={index}>
           <div className="flex w-full  items-center mt-10">
             <span className="material-symbols-outlined text-gray-600">
@@ -72,7 +75,8 @@ function TaskList({ tasks, setSelected, setTasks }) {
             </div>
           </div>
         </div>
-      ))}
+      ))
+      }
     </div>
   );
 }

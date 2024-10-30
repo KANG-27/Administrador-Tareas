@@ -1,7 +1,9 @@
 .App {
   text-align: center;
 }
-
+.selected{
+  @apply bg-primary-color px-3 rounded-lg py-1
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
