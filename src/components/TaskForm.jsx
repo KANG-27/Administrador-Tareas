@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function TaskForm({ setSelected, onSaveTask }) {
+function TaskForm({ setSelected, updateTask }) {
   const [formData, setFormData] = useState({
     title: "",
     date: "",
@@ -18,7 +18,7 @@ function TaskForm({ setSelected, onSaveTask }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    onSaveTask(formData);
+    updateTask(formData);
     setFormData({ title: "", date: "", time: "", complete: false });
     setSelected("all");
   };
@@ -29,7 +29,7 @@ function TaskForm({ setSelected, onSaveTask }) {
         <div className="flex justify-between">
           <h1 className="text-4xl text-primary-color">Añadir nueva tarjeta</h1>
           <p
-            className="text-primary-color text-4xl "
+            className="text-primary-color text-4xl cursor-pointer"
             onClick={() => {
               setSelected("all");
             }}
