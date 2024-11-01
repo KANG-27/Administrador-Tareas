@@ -1,6 +1,4 @@
 function TaskList({ tasks, updateTask, toogleComplete, deleteTask }) {
-
-
   return (
     <div className="w-full mt-20 ml-16">
       <h1 className="text-start text-4xl">Proximo</h1>
@@ -15,7 +13,7 @@ function TaskList({ tasks, updateTask, toogleComplete, deleteTask }) {
               <span className="material-symbols-outlined text-gray-600">
                 date_range
               </span>
-              <p className="text-primary-color mx-2">{task.date}</p>
+              <p className="text-primary-color mx-2">{task.date.toLocaleDateString('es-CO')}</p>
               <hr className="border-primary-color border w-[80%]" />
             </div>
             <div className="flex items-center justify-between w-[85%]">
@@ -35,7 +33,7 @@ function TaskList({ tasks, updateTask, toogleComplete, deleteTask }) {
                     <span className="material-symbols-outlined">timer</span>
                   </p>
                   <p className="text-primary-color flex items-center">
-                    {task.date}
+                    {task.date.toLocaleDateString('es-CO')}
                     <span className="material-symbols-outlined">event</span>
                   </p>
                 </div>

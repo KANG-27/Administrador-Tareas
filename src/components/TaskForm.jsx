@@ -17,6 +17,7 @@ function TaskForm({ setSelected, updateTask }) {
   };
 
   const handleSubmit = (e) => {
+    console.log(formData)
     e.preventDefault();
     updateTask(formData);
     setFormData({ title: "", date: "", time: "", complete: false });
