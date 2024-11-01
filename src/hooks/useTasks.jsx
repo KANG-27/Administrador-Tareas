@@ -6,6 +6,7 @@ export function useTasks() {
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
+
     const saveTask = localStorage.getItem("taskData");
     if (saveTask) {
       const parsedTasks = JSON.parse(saveTask).map((task) => ({
