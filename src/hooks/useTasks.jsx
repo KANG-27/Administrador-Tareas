@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
 export function useTasks() {
+  const [selected, setSelected] = useState("all");
+
   const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
@@ -15,7 +17,7 @@ export function useTasks() {
   }, []);
 
   //   actualizar lista
-  const updateTask = (newTask) => {
+  const add = (newTask) => {
     const formattedTask = {
       ...newTask,
       date: newTask.date ? new Date(`${newTask.date}T00:00:00`) : null,
@@ -25,7 +27,10 @@ export function useTasks() {
     orderTask(updatedTasks);
     localStorage.setItem("taskData", JSON.stringify(updatedTasks));
   };
-
+  const updateTask = (element) => {
+    setSelected("newCard")
+    deleteTask(element);
+  };
   //   completar tarea
   const toogleComplete = (index) => {
     const updatedTasks = tasks.map((task, i) =>
@@ -45,5 +50,5 @@ export function useTasks() {
     const orderTask = element.sort((a, b) => (a.date || 0) - (b.date || 0));
     setTasks(orderTask);
   };
-  return { tasks, updateTask, toogleComplete, deleteTask };
+  return { selected, tasks, setSelected, updateTask, toogleComplete, deleteTask, add };
 }

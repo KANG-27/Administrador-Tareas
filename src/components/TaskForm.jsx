@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function TaskForm({ setSelected, updateTask }) {
+function TaskForm({ setSelected, add }) {
   const [formData, setFormData] = useState({
     title: "",
     date: "",
@@ -19,7 +19,7 @@ function TaskForm({ setSelected, updateTask }) {
   const handleSubmit = (e) => {
     console.log(formData)
     e.preventDefault();
-    updateTask(formData);
+    add(formData);
     setFormData({ title: "", date: "", time: "", complete: false });
     setSelected("all");
   };
